@@ -1,0 +1,33 @@
+.header{
+  width: 100%;
+  min-height: 74px;
+  background: #F3C1F8;
+  padding: 0 70px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__options{
+  display: flex;
+  align-items: center;
+}
+
+.header__option{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__option-log{
+  margin-left: 30px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  background: black;
+  color: white;
+  border-radius: 3px;
+}

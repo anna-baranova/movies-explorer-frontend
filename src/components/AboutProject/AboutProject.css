@@ -1,0 +1,63 @@
+.project{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.project__info-list{
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.project__timing{
+  grid-template-columns: 1fr 4fr;
+  gap: 0;
+  margin: 110px 0;
+}
+
+.project__info-subtitle{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 70px 0 26px 0;
+}
+
+.project__info-text{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.project__timing-period{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  background: #F2F2F2;
+  padding: 9px 0 9px 0;
+  margin: 0 0 14px 0;
+}
+
+.project__timing-period_black{
+  color: #FFFFFF;
+  background: #000000;
+}
+
+.project__timing-name{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #A0A0A0;
+}
