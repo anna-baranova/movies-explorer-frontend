@@ -6,8 +6,8 @@
 }
 
 .about-me__name{
-  font-size: 50px;
   font-weight: normal;
+  font-size: 50px;
   line-height: 58px;
   letter-spacing: -0.04em;
   margin: 0 0 18px 0;
@@ -27,6 +27,7 @@
   line-height: 22px;
   mix-blend-mode: normal;
   margin: 26px 0 99px 0;
+  max-width: 600px;
 }
 
 .about-me__social{
@@ -54,10 +55,35 @@
 }
 
 .about-me__picture{
-  max-width: 270px;
-  width: 100%;
+  width: 270px;
+  height: 327px;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
-  margin-left: 50px;
+  margin-left: 45px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__name{
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .about-me__job{
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__info{
+    font-size: 12px;
+    line-height: 18px;
+    margin: 20px 0 87px 0;
+    max-width: 364px;
+  }
+
+  .about-me__picture{
+    width: 255px;
+    height: 307px;
+  }
 }

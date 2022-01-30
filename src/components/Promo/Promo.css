@@ -18,3 +18,9 @@
   margin: 0;
   max-width: 730px;
 }
+
+@media screen and (max-width: 768px) {
+  .promo{
+    min-height: 784px;
+  }
+}

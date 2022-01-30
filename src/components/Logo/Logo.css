@@ -1,0 +1,10 @@
+.logo{
+  display: block;
+  min-width: 38px;
+  min-height: 38px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.logo:hover{
+  opacity: 0.5;
+}

@@ -24,8 +24,14 @@
   text-decoration-line: underline;
   color: #FFFFFF;
   margin-right: 40px;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .navtab__item:last-child{
   margin-right: 0;
+}
+
+.navtab__item:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }

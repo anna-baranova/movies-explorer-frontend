@@ -43,4 +43,19 @@
   width: 100%;
   margin: 0;
   background: url('../../images/portfolio__arrow.svg') no-repeat center right;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.portfolio__link:hover{
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio{
+    margin: 90px 50px;
+  }
+
+  .portfolio__link{
+    font-size: 28px;
+  }
 }

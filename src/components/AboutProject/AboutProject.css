@@ -6,8 +6,11 @@
 }
 
 .project__info-list{
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-rows: auto auto;
+  grid-gap: 26px 40px;
+  grid-auto-flow: column;
 }
 
 .project__timing{
@@ -23,7 +26,7 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
-  margin: 70px 0 26px 0;
+  margin: 70px 0 0 0;
 }
 
 .project__info-text{
@@ -60,4 +63,14 @@
   line-height: 17px;
   text-align: center;
   color: #A0A0A0;
+}
+
+@media screen and (max-width: 768px) {
+  .project__info-list{
+    grid-gap: 22px 30px;
+  }
+
+  .project__timing{
+    margin: 93px 0 90px 0;
+  }
 }

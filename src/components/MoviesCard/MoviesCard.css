@@ -1,0 +1,65 @@
+.movie-card{
+  background: #FDFDFD;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  width: 364px;
+}
+
+.movie-card__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 24px 17px 16px;
+}
+
+.movie-card__title{
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+}
+
+.movie-card__like{
+  background: none no-repeat center center;
+  padding: 0;
+  width: 14px;
+  height: 12px;
+  border: none;
+  outline: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.movie-card__like:hover{
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.movie-card_not-liked{
+  background-image: url('../../images/dislike.svg');
+}
+
+.movie-card_liked{
+  background-image: url('../../images/like.svg');
+}
+
+.movie-card_delete{
+  visibility: hidden;
+  background-image: url('../../images/delete_icon.svg');
+}
+
+.movie-card:hover .movie-card_delete{
+  visibility: visible;
+  cursor: pointer;
+}
+
+.movie-card__duration{
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  align-items: center;
+  color: #A0A0A0;
+  margin: 0 0 0 16px;
+  padding-bottom: 16px;
+  box-sizing: border-box;
+}

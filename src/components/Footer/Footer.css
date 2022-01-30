@@ -1,5 +1,6 @@
 .footer{
-  margin: 70px 79px 20px 70px;
+  padding: 79px 70px 20px 70px;
+  box-sizing: border-box;
 }
 
 .footer__text{
@@ -51,4 +52,15 @@
   text-align: right;
   color: #000000;
   text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.footer__link:hover{
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .footer{
+    padding: 79px 30px 20px 30px;
+  }
 }
