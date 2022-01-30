@@ -2,14 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import './AuthForm.css'
-import logoPath from '../../images/logo-black.svg';
-
 
 function AuthForm (props) {
   return(
     <section className='auth'>
       <div className='auth__container'>
-        <Logo logoImage={logoPath}/>
+        <Logo/>
         <h2 className="auth__title">{props.title}</h2>
         <form className='auth__form'>
           {props.children}

@@ -24,3 +24,16 @@
     min-height: 784px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .promo{
+    min-height: 570px;
+    background-size: 248px;
+  }
+
+  .promo__title{
+    font-size: 31px;
+    line-height: 39px;
+    max-width: 300px;
+  }
+}

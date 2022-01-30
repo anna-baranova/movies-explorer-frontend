@@ -32,3 +32,13 @@
   color: white;
   border-radius: 3px;
 }
+
+@media screen and (max-width: 320px) {
+  .auth-header__item{
+    font-size: 10px;
+  }
+
+  .auth_option-log{
+    margin-left: 14px;
+  }
+}

@@ -25,3 +25,13 @@
     padding-top: 90px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .section{
+    padding: 0 18px;
+  }
+
+  .section__title{
+    padding: 70px 0 28px 0;
+  }
+}

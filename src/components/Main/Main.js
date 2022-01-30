@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 import NavAuth from '../NavAuth/NavAuth';
 import Navigation from '../Navigation/Navigation';
 
-const loggedIn = true;
+const loggedIn = false;
 
 function Main () {
   return(

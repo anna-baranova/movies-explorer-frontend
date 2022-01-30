@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import './Logo.css'
 
 
-function Logo (props) {
+function Logo () {
     return(
-        <NavLink to='/'><img className="logo" src={props.logoImage} alt='логотип' /></NavLink>
+        <NavLink to='/' className="logo" />
     )
 }
 

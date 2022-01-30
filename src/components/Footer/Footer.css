@@ -64,3 +64,42 @@
     padding: 79px 30px 20px 30px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer{
+    padding: 79px 10px 10px 10px;
+  }
+
+  .footer__container{
+    flex-direction: column-reverse;
+    margin-top: 30px;
+  }
+
+  .footer__list{
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer__list-item{
+    margin: 0 0 12px 0;
+  }
+
+  .footer__list-item:last-child{
+    margin-bottom: 30px;
+  }
+
+  .footer__link{
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__copyright{
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__text{
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
