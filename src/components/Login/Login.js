@@ -11,10 +11,6 @@ function Login () {
         link="Регистрация"
         to="signup"
       >
-        <label className='auth__input-label'>
-          Имя
-        <input className='auth__input' type='text'></input>
-        </label>
       </AuthForm>
   )
 }

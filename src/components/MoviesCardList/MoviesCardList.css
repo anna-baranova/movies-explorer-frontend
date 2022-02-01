@@ -4,7 +4,7 @@
 
 .movies-cardlist{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(364px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 37px 24px;
   margin: 0 0 50px 0;
   list-style: none;
@@ -38,7 +38,50 @@
 }
 
 .movies-more__button:hover {
-  /* box-shadow: #000 0 0 3px inset;
-  transition: box-shadow .25s ease-in-out; */
   opacity: 0.6;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies{
+    padding: 70px 36px 80px 36px;
+  }
+
+  .movies-cardlist{
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movies{
+    padding: 70px 30px 80px 30px;
+  }
+
+  .movies-cardlist{
+    margin-bottom: 30px;
+  }
+
+  .movies-more__button{
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .movies{
+    padding: 40px 10px 80px 10px;
+  }
+
+  .movies-cardlist{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies{
+    padding: 40px 10px 80px 10px;
+  }
+
+  .movies-cardlist{
+    display: block;
+  }
 }

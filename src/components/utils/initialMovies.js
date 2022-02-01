@@ -13,7 +13,7 @@ const initialMovies = [
     name: "33 слова о дизайне",
     duration: 107,
     image: image1,
-    isSaved: true,
+    isSaved: false,
   },
   {
     _id: "2",

@@ -74,37 +74,55 @@
   .project__timing{
     margin: 93px 0 90px 0;
   }
+  .project__info-text{
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 560px) {
   .project__info-list{
     display: block;
   }
 
   .project__info-subtitle{
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 24px;
     margin: 58px 0 16px 0;
   }
 
   .project__info-text{
-    font-size: 11px;
+    font-size: 12px;
     line-height: 16px;
   }
 
   .project__timing{
     grid-template-columns: 100px 1fr;
-    margin: 60px 0 93px 0;
+    margin: 60px 0 70px 0;
   }
 
   .project__timing-period{
     font-size: 11px;
     line-height: 13px;
     padding: 11px 0;
+    margin-bottom: 10px;
   }
 
   .project__timing-name{
     font-size: 11px;
     line-height: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+  .project__info-subtitle{
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .project__info-text{
+    font-size: 11px;
+    line-height: 16px;
   }
 }

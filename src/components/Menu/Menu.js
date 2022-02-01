@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import './Menu.css';
 
-function Menu({children, mob, navMobMovies, navMobSavedMovies, navMobAccount, navMobAccountProfile, navMobAccountIcon}) {
+function Menu({children, mob='', navMobMovies='', navMobSavedMovies='', navMobAccount='', navMobAccountProfile='', navMobAccountIcon=''}) {
   return (
       <nav className={`nav-header ${mob}`}>
         {children}

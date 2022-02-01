@@ -13,13 +13,13 @@
   justify-content: flex-start;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .header{
     padding: 18px 30px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 560px) {
   .header{
     padding: 18px 14px;
   }

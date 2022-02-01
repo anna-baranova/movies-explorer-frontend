@@ -38,6 +38,13 @@
 
 @media screen and (max-width: 768px) {
   .navtab__item{
+    font-size: 13px;
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navtab__item{
     font-size: 11px;
     margin-right: 24px;
   }

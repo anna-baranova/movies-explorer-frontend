@@ -1,7 +1,14 @@
 .auth{
   display: flex;
   justify-content: center;
-  margin-top: 70px;
+}
+
+.auth__container{
+  display: flex;
+  flex-direction: column;
+  padding-top: 71px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 .auth__form{
@@ -55,7 +62,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 70px 0;
+  margin: auto 0 70px 0;
 }
 
 .auth__button{
@@ -90,3 +97,30 @@
   text-decoration: none;
 }
 
+@media screen and (min-width: 320px) {
+  .auth__form{
+    min-width: 260px;
+  }
+
+  .auth__container{
+    padding-top: 50px;
+  }
+
+  .auth__title{
+    text-align: center;
+  }
+
+  .auth__buttons{
+    margin-bottom: 30px;
+  }
+  
+  .auth__text{
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth__link{
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

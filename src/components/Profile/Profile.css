@@ -3,13 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  min-height: 100vh;
 }
 
 .profile__form{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
   /* min-width: 410px; */
 }
 
@@ -18,7 +19,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  margin: 74px 0 123px 0;
+  margin: 0 0 123px 0;
 }
 
 .profile__fieldset{
@@ -79,5 +80,4 @@
   text-align: center;
   color: #FF4062;
   text-decoration: none;
-  margin-bottom: 70px;
 }

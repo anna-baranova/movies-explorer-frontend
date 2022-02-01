@@ -10,3 +10,9 @@
 .logo:hover{
   opacity: 0.5;
 }
+
+@media screen and (max-width: 320px) {
+  .logo{
+    background-position: center center;
+  }
+}

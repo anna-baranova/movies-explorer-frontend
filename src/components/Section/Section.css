@@ -26,6 +26,12 @@
   }
 }
 
+@media screen and (max-width: 560px) {
+  .section{
+    padding: 0 24px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .section{
     padding: 0 18px;
@@ -33,5 +39,7 @@
 
   .section__title{
     padding: 70px 0 28px 0;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
