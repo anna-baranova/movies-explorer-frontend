@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "scp -r ./build/* anna_baranova@51.250.6.65:/home/anna_baranova/movies-explorer-frontend" 
   },
   "eslintConfig": {
     "extends": [
