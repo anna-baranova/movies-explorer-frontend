@@ -18,12 +18,14 @@ function Main () {
       <Header modifier='header_type_not-authed'>
         {!loggedIn ? <NavAuth /> : <Navigation />}
       </Header>
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main>
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
     </>
   )

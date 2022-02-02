@@ -17,7 +17,7 @@ function MoviesCardList ({movies, isOnSavedPage}) {
       </ul>
       {
         movies.length > 11 &&
-        <button className="movies-more__button">Еще</button>
+        <button className="movies-more-button">Еще</button>
       }
     </section>
   )

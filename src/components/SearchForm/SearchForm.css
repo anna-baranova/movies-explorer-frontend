@@ -23,8 +23,16 @@
   margin-right: 20px;
 }
 
+.search-form__input-container:focus-within{
+  border-bottom: 1px solid black;
+}
+
 .search-form__input::placeholder{
   color: #A0A0A0;
+}
+
+.search-form__input:focus .search-form__input-container{
+  border-bottom: 1px solid red;
 }
 
 .search-form__button{

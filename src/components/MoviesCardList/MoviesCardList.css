@@ -13,17 +13,7 @@
   list-style: none;
 }
 
-.movies-more{
-  height: 36px;
-  background-color: #F9F9F9;
-  /* margin: 50px 70px 80px 70px;  */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.1s linear 0.1s;
-}
-
-.movies-more__button{
+.movies-more-button{
   width: 100%;
   font-weight: 500;
   font-size: 12px;
@@ -37,7 +27,7 @@
   transition: box-shadow .25s ease-in-out;
 }
 
-.movies-more__button:hover {
+.movies-more-button:hover {
   opacity: 0.6;
 }
 
@@ -61,7 +51,7 @@
     margin-bottom: 30px;
   }
 
-  .movies-more__button{
+  .movies-more-button{
     margin-top: 50px;
   }
 }

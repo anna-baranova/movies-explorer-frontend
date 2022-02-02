@@ -28,7 +28,7 @@ function MobMenu() {
           >
             <NavLink 
               exact to="/" 
-              className='nav-header_item nav-mobile__main' 
+              className='nav-header__item nav-mobile__main' 
               activeClassName="nav-header__movies-active"
             >
               Главная

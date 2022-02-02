@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.nav-header_item{
+.nav-header__item{
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
@@ -14,7 +14,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.nav-header_item:hover{
+.nav-header__item:hover{
   opacity: 0.5;
 }
 
@@ -65,14 +65,14 @@
     margin: 0;
   }
 
-  .nav-header_item{
+  .nav-header__item{
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 28px;
   }
   
-  .nav-header_item:last-of-type{
+  .nav-header__item:last-of-type{
     margin-bottom: 0px;
   }
 

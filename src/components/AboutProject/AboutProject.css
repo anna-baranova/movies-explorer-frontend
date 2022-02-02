@@ -5,7 +5,7 @@
   display: grid;
 }
 
-.project__info-list{
+.about-project__info-list{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
@@ -13,7 +13,7 @@
   grid-auto-flow: column;
 }
 
-.project__timing{
+.about-project__timing{
   grid-template-columns: 1fr 4fr;
   gap: 0;
   margin: 110px 0;
@@ -67,11 +67,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .project__info-list{
+  .about-project__info-list{
     grid-gap: 22px 30px;
   }
 
-  .project__timing{
+  .about-project__timing{
     margin: 93px 0 90px 0;
   }
   .project__info-text{
@@ -81,7 +81,7 @@
 }
 
 @media screen and (max-width: 560px) {
-  .project__info-list{
+  .about-project__info-list{
     display: block;
   }
 
@@ -96,7 +96,7 @@
     line-height: 16px;
   }
 
-  .project__timing{
+  .about-project__timing{
     grid-template-columns: 100px 1fr;
     margin: 60px 0 70px 0;
   }

@@ -16,10 +16,10 @@ function MoviesCard ({image, name, duration, isSavedMovie}) {
         <p className="movie-card__title">{name}</p>
         {
           isSavedMovie ?
-          <button className="movie-card__like movie-card_delete"></button> :
+          <button className="movie-card__like movie-card__delete"></button> :
           <button 
             onClick={toggleLikeMovie} 
-            className={`movie-card__like ${!isLiked ? "movie-card_not-liked": "movie-card_liked"}`}>
+            className={`movie-card__like ${!isLiked ? "movie-card__not-liked": "movie-card__liked"}`}>
           </button>
         }
       </div>
