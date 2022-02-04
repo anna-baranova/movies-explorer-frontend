@@ -1,20 +1,36 @@
 import React from "react";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './SearchForm.css';
 
-function SearchForm () {
+function SearchForm (props) {
+  const [searchedFilm, setSearchedFilm] = React.useState('');
+  const [isShortMovie, setIsShortMovie] = React.useState(true);
+
+  const getSearchedFilm = (e) => {
+    setSearchedFilm(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!!searchedFilm) props.onGetFilms(isShortMovie, searchedFilm);
+  };
+
   return(
       <section className="search">
-        <form className="search-form">
+        <form className="search-form" onSubmit={handleSubmit}>
           <div className="search-form__input-container">
-            <input className="search-form__input" placeholder="Фильм" required></input>
-            <button className="search-form__button"></button>
-          </div>
-          <div className="search-form__filter">
-            <button className="search-form__filter-btn"></button>
-            <p className="search-form__filter-name">Короткометражки</p>
+            <input 
+              className="search-form__input" 
+              placeholder="Фильм" 
+              value={searchedFilm} 
+              onChange={getSearchedFilm} 
+              required
+            >
+            </input>
+            <button className="search-form__button" type="submit"></button>
           </div>
         </form>
-
+        <FilterCheckbox setIsShortMovie={setIsShortMovie} />
       </section>
   )
 }

@@ -13,7 +13,7 @@ function Register () {
       >
         <label className='auth__input-label'>
           Имя
-        <input className='auth__input' type='text'></input>
+        <input className='auth__input' type='text' required minLength={2} maxLength={30}></input>
         </label>
       </AuthForm>
   )
