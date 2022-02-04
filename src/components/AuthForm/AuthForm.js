@@ -13,11 +13,11 @@ function AuthForm (props) {
           {props.children}
           <label className='auth__input-label'>
             E-mail
-            <input className='auth__input' type='email'></input>
+            <input className='auth__input' type='email' required></input>
           </label>
           <label className='auth__input-label'>
             Пароль
-            <input className='auth__input' type='password'></input>
+            <input className='auth__input' type='password' required></input>
           </label>
           <p className='auth__error'>Что-то пошло не так...</p>
         </form>

@@ -8,14 +8,15 @@ import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 
 
-function Movies () {
+function Movies (props) {
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
-      <SearchForm />
-      <MoviesCardList movies={initialMovies} isOnSavedPage={false}/>
+      <SearchForm onGetFilms={props.onGetFilms} />
+      {/* <MoviesCardList movies={initialMovies} isOnSavedPage={false}/> */}
+      <MoviesCardList movies={props.movies} isOnSavedPage={false} displayCards={props.displayCards} isLoading={props.isLoading}/>
       <Footer />
     </>
   )

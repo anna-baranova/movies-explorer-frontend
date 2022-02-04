@@ -1,23 +1,23 @@
 import React from "react";
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList ({movies, isOnSavedPage}) {
+function MoviesCardList (props) {
   return(
     <section className="movies">
-      <ul className="movies-cardlist">
-        {movies.map((movie) => {
-          return <MoviesCard 
-            key={movie._id} 
-            image={movie.image} 
-            name={movie.name} 
-            duration={movie.duration}
-            isSavedMovie={isOnSavedPage} />
-        })}
-      </ul>
-      {
-        movies.length > 11 &&
-        <button className="movies-more-button">Еще</button>
+      {props.isLoading ? <Preloader /> : 
+        props.movies.length === 0 ?
+        <p className="movies__not-found">Ничего не найдено</p> :
+        <ul className="movies-cardlist">
+          {props.movies.map((movie) => {
+            return <MoviesCard 
+              key={movie.id} 
+              movieInfo={movie}
+              isSavedMovie={movie.isOnSavedPage} />
+          })}
+        </ul>
+        
       }
     </section>
   )
