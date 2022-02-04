@@ -1,0 +1,18 @@
+.logo{
+  display: block;
+  min-width: 38px;
+  min-height: 38px;
+  transition: opacity 0.2s ease-in-out;
+  background: url('../../images/logo-black.svg') no-repeat;
+  background-size: contain;
+}
+
+.logo:hover{
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 560px) {
+  .logo{
+    background-position: center center;
+  }
+}

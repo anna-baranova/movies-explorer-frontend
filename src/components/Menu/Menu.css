@@ -1,0 +1,83 @@
+.nav-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-header__item{
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-header__item:hover{
+  opacity: 0.5;
+}
+
+.nav-header__movies{
+  margin: 0 16px 0 44px;
+}
+
+.nav-header__movies-active{
+  font-weight: 500;
+}
+
+.nav-header__account{
+  min-height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.2s ease-in-out;
+  margin-left: auto;
+}
+
+.nav-header__account:hover{
+  opacity: 0.5;
+}
+
+.nav-header__account-profile{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 17px 0 0;
+}
+
+.nav-header__account-icon{
+  background: url('../../images/account__icon.svg') no-repeat #F9F9F9;
+  min-width: 26px;
+  min-height: 30px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-header{
+    display: none;
+  }
+
+  .nav-header__movies{
+    margin: 0;
+  }
+
+  .nav-header__item{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+  
+  .nav-header__item:last-of-type{
+    margin-bottom: 0px;
+  }
+
+  .nav-header__movies-active{
+    border-bottom: 2px solid #000;
+  }
+}
+

@@ -1,0 +1,45 @@
+.auth-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-header__item{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.auth-header__item:hover{
+  opacity: 0.5;
+}
+
+
+.auth_option-reg{
+  color:black;
+}
+
+.auth_option-log{
+  margin-left: 30px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  background: black;
+  color: white;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 320px) {
+  .auth-header__item{
+    font-size: 10px;
+  }
+
+  .auth_option-log{
+    margin-left: 14px;
+    padding: 5px 12px;
+  }
+}

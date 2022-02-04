@@ -1,0 +1,93 @@
+.nav-mobile{
+  margin-left: auto;
+}
+
+.nav-mobile__open-btn{
+  background-image: url('../../images/mobmenu-open.svg');
+  background-size: 100%;
+  width: 44px;
+  height: 44px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-mobile__open-btn:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.nav-mobile__menu{
+  display: none;
+}
+
+.nav-mobile__menu-visible{
+  display: flex;
+}
+
+.nav-mobile__overlay{
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.nav-mobile__container{
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 68%;
+  height: 100vh;
+} 
+
+.nav-mobile__close-btn{
+  width: 22px;
+  height: 22px;
+  background: none;
+  background-image: url('../../images/close_mob_menu_btn.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  margin: 22px 22px 105px auto;
+  padding: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-mobile__close-btn:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.nav-mobile__list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.nav-mobile__account{
+  margin: auto 0 92px 0;
+}
+
+@media screen and (min-width: 769px) {
+  .nav-mobile{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .nav-mobile__open-btn{
+    width: 40px;
+    height: 43px;
+  }
+
+  .nav-mobile__container{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  } 
+}

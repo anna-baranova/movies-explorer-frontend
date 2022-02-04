@@ -1,0 +1,31 @@
+.not-found{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found__err-code{
+  font-weight: normal;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+  margin: 246px 0 5px 0;
+}
+
+.not-found__err-message{
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 0;
+}
+
+.not-found__back{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  margin-top: 184px;
+}
