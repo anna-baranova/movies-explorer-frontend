@@ -44,13 +44,8 @@
   background-image: url('../../images/like.svg');
 }
 
-.movie-card__delete{
-  visibility: hidden;
-  background-image: url('../../images/delete_icon.svg');
-}
-
 .movie-card:hover .movie-card__delete{
-  visibility: visible;
+  background-image: url('../../images/delete_icon.svg');
   cursor: pointer;
 }
 
@@ -68,10 +63,17 @@
 .movie-card__image{
   overflow: hidden;
   width: 100%;
-  min-height: auto;
+  height: 203px;
   display:block;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
+  border-radius: 6px 6px 0 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .movie-card__image{
+    height: 190px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -94,7 +96,7 @@
 @media screen and (max-width: 320px) {
   .movie-card__image{
     max-height: 168px;
-    min-height: auto;
+    height: auto;
   }
 
   .movie-card__title{

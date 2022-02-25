@@ -11,14 +11,11 @@ function FilterCheckbox ({ setIsShortMovie }) {
 
   return(
     <div className="search-form__filter">
-      {/* <button className="search-form__filter-btn"></button> */}
-      <input 
-        type="checkbox"
-        className="search-form__filter-btn"
-        checked={checkedInput}
-        onChange={handleToggleCheck}
-      />
-      <p className="search-form__filter-name">Короткометражки</p>
+      <label htmlFor="switcher" className="search-form__filter-label">
+        <input type="checkbox" className="search-form__filter-btn" checked={checkedInput} onChange={handleToggleCheck} id="switcher"/>
+        <span className="search-form__filter-fake"/>
+        <span className="search-form__filter-name">Короткометражки</span>
+      </label>
   </div>
   )
 }

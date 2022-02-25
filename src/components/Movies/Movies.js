@@ -8,15 +8,24 @@ import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 
 
-function Movies (props) {
+function Movies ({ onGetFilms, movies, displayCards, isLoading, wasRequest, onMovieSave, 
+  onMovieDelete, savedMovies}) {
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
-      <SearchForm onGetFilms={props.onGetFilms} />
-      {/* <MoviesCardList movies={initialMovies} isOnSavedPage={false}/> */}
-      <MoviesCardList movies={props.movies} isOnSavedPage={false} displayCards={props.displayCards} isLoading={props.isLoading}/>
+      <SearchForm onGetFilms={onGetFilms} />
+      <MoviesCardList 
+        movies={movies} 
+        isOnSavedPage={false} 
+        displayCards={displayCards} 
+        isLoading={isLoading} 
+        wasRequest={wasRequest}
+        onMovieSave={onMovieSave}
+        onMovieDelete={onMovieDelete}
+        savedMovies={savedMovies}
+      />
       <Footer />
     </>
   )

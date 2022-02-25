@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Register.css'
 
-function Register () {
+function Register ({onRegister}) {
   return(
       <AuthForm 
         title="Добро пожаловать!" 
@@ -10,12 +10,9 @@ function Register () {
         text="Уже зарегистрированы?"
         link="Войти"
         to="/signin"
-      >
-        <label className='auth__input-label'>
-          Имя
-        <input className='auth__input' type='text' required minLength={2} maxLength={30}></input>
-        </label>
-      </AuthForm>
+        isNameNeeded={true}
+        handleSubmitForm={onRegister}
+      />
   )
 }
 

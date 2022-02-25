@@ -54,23 +54,47 @@
 }
 
 .search-form__filter{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin-top: 32px;
 }
 
+.search-form__filter-label:hover{
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 .search-form__filter-btn{
+  display: none;
+}
+
+.search-form__filter-fake{
+  display: inline-block;
   background: none;
-  background-image: url('../../images/smalltumb.svg');
-  background-size: contain;
+  background-image: url('../../images/smalltumboff.svg');
+  background-size: 36px 20px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center bottom;
   width: 36px;
   height: 20px;
   border: none;
   padding: 0;
   margin: 0 14px 0 0;
+  position: relative;
+}
+
+.search-form__filter-fake::before{
+  content: "";
+  position: absolute;
+  display: block;
+  background-image: url('../../images/smalltumb.svg');
+  background-size: 42px 20px;
+  width: 42px;
+  height: 20px;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.search-form__filter-btn:checked + .search-form__filter-fake::before{
+  opacity: 1;
 }
 
 .search-form__filter-name{
@@ -78,7 +102,7 @@
   font-size: 13px;
   line-height: 18px;
   margin: 0;
-  vertical-align:middle;
+  vertical-align:top;
 }
 
 @media screen and (max-width: 1024px) {

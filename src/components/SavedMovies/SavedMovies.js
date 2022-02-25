@@ -8,14 +8,18 @@ import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 
 
-function SavedMovies () {
+function SavedMovies ({ movies, onMovieDelete }) {
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
       <SearchForm />
-      <MoviesCardList movies={initialMoviesSaved} isOnSavedPage={true}/>
+      <MoviesCardList 
+        movies={movies} 
+        isOnSavedPage={true}
+        onMovieDelete={onMovieDelete}
+      />
       <Footer />
     </>
   )

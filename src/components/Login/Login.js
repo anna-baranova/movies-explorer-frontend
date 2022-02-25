@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Login.css'
 
-function Login () {
+function Login ({onLogin}) {
   return(
       <AuthForm 
         title="Рады видеть!" 
@@ -10,8 +10,9 @@ function Login () {
         text="Еще не зарегистрированы?"
         link="Регистрация"
         to="signup"
-      >
-      </AuthForm>
+        isNameNeeded={false}
+        handleSubmitForm={onLogin}
+      />
   )
 }
 

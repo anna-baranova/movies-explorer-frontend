@@ -71,6 +71,12 @@
   background: none;
   padding: 0;
   margin: 220px 0 16px 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.profile__button:hover{
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .profile__link{
@@ -80,4 +86,9 @@
   text-align: center;
   color: #FF4062;
   text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.profile__link:hover{
+  opacity: 0.6;
 }

@@ -77,6 +77,12 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.auth__button:hover{
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .auth__text{
