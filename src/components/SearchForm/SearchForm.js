@@ -2,7 +2,7 @@ import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './SearchForm.css';
 
-function SearchForm (props) {
+function SearchForm ({ onGetFilms }) {
   const [searchedFilm, setSearchedFilm] = React.useState('');
   const [isShortMovie, setIsShortMovie] = React.useState(true);
 
@@ -12,7 +12,7 @@ function SearchForm (props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!!searchedFilm) props.onGetFilms(isShortMovie, searchedFilm);
+    onGetFilms(isShortMovie, searchedFilm);
   };
 
   return(

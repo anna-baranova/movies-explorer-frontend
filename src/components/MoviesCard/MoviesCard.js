@@ -12,8 +12,7 @@ function MoviesCard ({ movieInfo, onMovieDelete, onMovieSave, isSavedMovie, save
 
 
   function handleDeleteClick() {
-    console.log("удаление", movieInfo)
-    onMovieDelete(movieInfo); //починить
+    onMovieDelete(movieInfo);
   }
   function handleSaveClick() {
     if (isLiked) {

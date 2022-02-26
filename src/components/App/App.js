@@ -8,7 +8,6 @@ import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import {register, login, checkToken} from '../../utils/Auth';
@@ -16,11 +15,10 @@ import {register, login, checkToken} from '../../utils/Auth';
 function App() {
   const history = new useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [movies, setMovies] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [displayCards, setDisplayCards] = React.useState(false);
+  const [movies, setMovies] = React.useState([]);  //СКОПИРОВАЛА В МУВИЗ
+  const [isLoading, setIsLoading] = React.useState(false); //СКОПИРОВАЛА В МУВИЗ
   const [currentUser, setCurrentUser] = React.useState({});
-  const [wasRequest, setWasRequest] = React.useState(false);
+  const [wasRequest, setWasRequest] = React.useState(false); //СКОПИРОВАЛА В МУВИЗ
   const [savedMovies, setSavedMovies] =  React.useState([]);
 
   function handleRegisterUser({name, email, password}) {
@@ -70,34 +68,43 @@ function App() {
         .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
   }
 
+  //--------------ПРОБУЮ ПЕРЕНЕСТИ В MOVIES---------------
+  // const handleGetFilms = (isShortMovie, searchText) => {
+    
+  //   const allMoviesinLocalStorage = JSON.parse(localStorage.getItem('BeatFilmsList'));
 
-  const handleGetFilms = (isShortMovie, searchText) => {
-    setIsLoading(true);
-    moviesApi.getFilms()
-      .then(dataFilms => {
-        localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
-        const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
-        const byDuration = film => film.duration <= 40;
-        setMovies(isShortMovie
-          ? dataFilms.filter(byDuration).filter(byTitle)
-          : dataFilms.filter(byTitle)
-        );
-        setIsLoading(false);
-        setDisplayCards(true);
-        setWasRequest(true);
-        console.log(dataFilms);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //   if(!allMoviesinLocalStorage) {
+  //     setIsLoading(true);
+  //     moviesApi.getFilms()
+  //       .then(dataFilms => {
+  //         localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
+  //         const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
+  //         const byDuration = film => film.duration <= 40;
+  //         setMovies(isShortMovie
+  //           ? dataFilms.filter(byDuration).filter(byTitle)
+  //           : dataFilms.filter(byTitle)
+  //         );
+  //         // setDisplayCards(true);
+  //         setWasRequest(true);
+  //         console.log(dataFilms);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       })
+  //       .finally(() => {
+  //         setIsLoading(false);
+  //     })
+  //   } else {
+  //     setMovies(allMoviesinLocalStorage)
+  //   }
+  // };
+
+  React.useEffect(() => {})
 
   function handleSaveMovies (movie) {
     const jwt = localStorage.getItem('jwt');
-    console.log("handleSaveMovies", jwt)
     mainApi.saveMovie(movie, jwt)
       .then((newMovie) => {
-        console.log("newMovie", newMovie)
         setSavedMovies((movieList) => [
           newMovie,
           ...movieList
@@ -148,6 +155,7 @@ function App() {
     }
   }, [currentUser]);
 
+  //сделать как-то попроще
   React.useEffect(() => {
     console.log("блабла")
     const handleCheckToken = () => {
@@ -190,11 +198,6 @@ function App() {
           </Route>
           <Route path="/movies">
             <Movies 
-              onGetFilms={handleGetFilms} 
-              movies={movies} 
-              displayCards={displayCards} 
-              isLoading={isLoading} 
-              wasRequest={wasRequest}
               savedMovies={savedMovies}
               onMovieSave={handleSaveMovies}
               onMovieDelete={handleDeleteMovies}

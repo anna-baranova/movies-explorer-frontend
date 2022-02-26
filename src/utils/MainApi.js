@@ -47,7 +47,6 @@ class MainApi {
   }
 
   saveMovie(movie, jwt) {
-    console.log("saveApi", jwt)
     return fetch (`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: {

@@ -1,25 +1,59 @@
 import React from "react";
 import './Movies.css';
-import { initialMovies } from "../utils/initialMovies";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
+import moviesApi from '../../utils/MoviesApi';
 
 
-function Movies ({ onGetFilms, movies, displayCards, isLoading, wasRequest, onMovieSave, 
-  onMovieDelete, savedMovies}) {
+function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
+
+    const [movies, setMovies] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [wasRequest, setWasRequest] = React.useState(false);
+
+    const handleGetFilms = (isShortMovie, searchText) => {
+    
+    // const allMoviesinLocalStorage = JSON.parse(localStorage.getItem('BeatFilmsList'));
+
+    // if(!allMoviesinLocalStorage) {
+      setIsLoading(true);
+      moviesApi.getFilms()
+        .then(dataFilms => {
+          localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
+          const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
+          const byDuration = film => film.duration <= 40;
+          setMovies(isShortMovie
+            ? dataFilms.filter(byDuration).filter(byTitle)
+            : dataFilms.filter(byTitle)
+          );
+          setWasRequest(true);
+          console.log(dataFilms);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          console.log("localStorage",localStorage)
+      })
+    // } else {
+    //   setMovies(allMoviesinLocalStorage)
+    // }
+  };
+
+
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
-      <SearchForm onGetFilms={onGetFilms} />
+      <SearchForm onGetFilms={handleGetFilms} />
       <MoviesCardList 
         movies={movies} 
         isOnSavedPage={false} 
-        displayCards={displayCards} 
         isLoading={isLoading} 
         wasRequest={wasRequest}
         onMovieSave={onMovieSave}
