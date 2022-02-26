@@ -2,7 +2,7 @@ import React from 'react';
 import Section from '../Section/Section';
 import './AboutMe.css'
 import studentPicturePath from '../../images/vitaliy.png'
-import { facebook, github } from '../utils/links'
+import { facebook, github } from '../../utils/constants'
 
 function AboutMe () {
   return (

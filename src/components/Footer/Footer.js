@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css'
-import { praktikum, github, facebook } from '../utils/links'
+import { praktikum, github, facebook } from '../../utils/constants'
 
 function Footer () {
   return (
