@@ -99,7 +99,6 @@ function App() {
   //   }
   // };
 
-  React.useEffect(() => {})
 
   function handleSaveMovies (movie) {
     const jwt = localStorage.getItem('jwt');
@@ -157,31 +156,30 @@ function App() {
 
   //сделать как-то попроще
   React.useEffect(() => {
-    console.log("блабла")
-    const handleCheckToken = () => {
-      const token = localStorage.getItem('jwt');
-      console.log("handleCheck", token)
-      if (token) {
-        checkToken(token)
-          .then((res) => {
-            if(res) {
-              console.log(res.email)
-              setCurrentUser({email: res.email, name: res.name, _id: res._id});
-              setLoggedIn(true);
-              console.log(currentUser)
-              // history.push('/');
-            } else {
-              setLoggedIn(false);
-              history.push('/');
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+    const token = localStorage.getItem('jwt');
+    if(token) {
+      const handleCheckToken = () => {
+        console.log("handleCheck", token)
+          checkToken(token)
+            .then((res) => {
+              if(res) {
+                console.log(res)
+                setCurrentUser({email: res.email, name: res.name, _id: res._id});
+                setLoggedIn(true);
+                console.log(currentUser)
+                // history.push('/');
+              } else {
+                setLoggedIn(false);
+                history.push('/');
+              }
+            })
+            .catch((err) => {
+              console.log(err)
+            })
       }
-    }
-    handleCheckToken();
-  }, [loggedIn]);
+      handleCheckToken();
+    }     
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -205,7 +203,7 @@ function App() {
           </Route>
           <Route path="/saved-movies">
             <SavedMovies 
-              movies={savedMovies} 
+              savedMovies={savedMovies} 
               onMovieDelete={handleDeleteMovies}
             />
           </Route>
