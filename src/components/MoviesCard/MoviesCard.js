@@ -4,12 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 function MoviesCard ({ movieInfo, onMovieDelete, onMovieSave, isSavedMovie, savedMovies }) {
 
-
-  // React.useEffect(() =>{
-  //   console.log("сохраненные", savedMovies, "все фильмы", movieInfo)
-  // })
   const isLiked = movieInfo.id && savedMovies.some((m) => Number(m.movieId) === movieInfo.id);
-
 
   function handleDeleteClick() {
     onMovieDelete(movieInfo);

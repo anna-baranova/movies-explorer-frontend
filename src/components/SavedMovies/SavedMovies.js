@@ -5,12 +5,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
-import searchFilter from "../../utils/functions";
+import { searchFilter } from "../../utils/functions"
 
 
 function SavedMovies ({ savedMovies, onMovieDelete }) {
 
-  const [filteredMovies, setFilteredMovies] = React.useState([]);
+  const [filteredSavedMovies, setFilteredSavedMovies] = React.useState([]);
 
   const [searchText, setSearchText] = React.useState('');
   const [isShortMovie, setIsShortMovie] = React.useState(false);
@@ -21,19 +21,17 @@ function SavedMovies ({ savedMovies, onMovieDelete }) {
     setSearchText(searchText);
     setIsShortMovie(isShortMovie);
     const searchResult = searchFilter(savedMovies, isShortMovie, searchText);
-    setFilteredMovies(searchResult);
+    setFilteredSavedMovies(searchResult);
     setWasRequest(true);
   }
   
    
   React.useEffect(() => {
     console.log("изначально сохраненные фильмы", savedMovies)
-    if (filteredMovies.length > 0) {
-
-      
+    if (filteredSavedMovies.length > 0) {
       const searchResult = searchFilter(savedMovies, isShortMovie, searchText);
-      setFilteredMovies(searchResult);
-      console.log("результат фильтра", filteredMovies)
+      setFilteredSavedMovies(searchResult);
+      console.log("результат фильтра", filteredSavedMovies)
     }
   }, []);
 
@@ -43,9 +41,9 @@ function SavedMovies ({ savedMovies, onMovieDelete }) {
         <Navigation />
       </Header>
       <SearchForm onGetFilms={handleGetFilms}/>
-      {wasRequest ? filteredMovies.length > 0 ?
+      {wasRequest ? filteredSavedMovies.length > 0 ?
         <MoviesCardList
-          movies={filteredMovies}
+          movies={filteredSavedMovies}
           onMovieDelete={onMovieDelete}
         /> : <p className="movies__not-found">Ничего не найдено</p> :
         <MoviesCardList 

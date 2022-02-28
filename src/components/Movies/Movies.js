@@ -44,8 +44,6 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
     // }
   };
 
-
-
   return(
     <>
       <Header modifier='header_type_authed'>
