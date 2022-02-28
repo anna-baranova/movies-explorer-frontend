@@ -6,7 +6,7 @@ import { facebook, github } from '../../utils/constants'
 
 function AboutMe () {
   return (
-    <Section sectionName='about-me' sectionNameTitle='about-me__title' content='Студент'>
+    <Section sectionName='about-me' sectionNameTitle='about-me__title' link="about-me" content='Студент'>
       <div className='about-me__table'> 
         <div>
           <h3 className='about-me__name'>Виталий</h3>

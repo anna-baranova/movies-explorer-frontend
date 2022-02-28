@@ -6,7 +6,7 @@ const techs = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB'];
 
 function Techs () {
   return(
-    <Section sectionName='techs' sectionNameTitle='techs__title' content='Технологии'>
+    <Section sectionName='techs' sectionNameTitle='techs__title' content='Технологии' link="techs">
       <h3 className='techs__subtitle'>7 технологий</h3>
       <p className='techs__description'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       <ul className='techs__list'>

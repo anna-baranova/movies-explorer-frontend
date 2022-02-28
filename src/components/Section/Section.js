@@ -4,7 +4,7 @@ import './Section.css'
 function Section (props) {
   return (
     <section className={`section ${props.sectionName}`}>
-      <h2 className={`section__title ${props.sectionNameTitle}`}>{props.content}</h2>
+      <h2 className={`section__title ${props.sectionNameTitle}`} id={props.link}>{props.content}</h2>
       {props.children}
   </section>
   )
