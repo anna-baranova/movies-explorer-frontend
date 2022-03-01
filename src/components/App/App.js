@@ -15,10 +15,7 @@ import {register, login, checkToken} from '../../utils/Auth';
 function App() {
   const history = new useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [movies, setMovies] = React.useState([]);  //СКОПИРОВАЛА В МУВИЗ
-  const [isLoading, setIsLoading] = React.useState(false); //СКОПИРОВАЛА В МУВИЗ
   const [currentUser, setCurrentUser] = React.useState({});
-  const [wasRequest, setWasRequest] = React.useState(false); //СКОПИРОВАЛА В МУВИЗ
   const [savedMovies, setSavedMovies] =  React.useState([]);
 
   function handleRegisterUser({name, email, password}) {
@@ -63,42 +60,11 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     mainApi.changeUserData(jwt, name, email)
       .then(res => {
+        console.log("updatedUser", res)
         setCurrentUser({email: res.email, name: res.name, _id: res._id});
       })
         .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
   }
-
-  //--------------ПРОБУЮ ПЕРЕНЕСТИ В MOVIES---------------
-  // const handleGetFilms = (isShortMovie, searchText) => {
-    
-  //   const allMoviesinLocalStorage = JSON.parse(localStorage.getItem('BeatFilmsList'));
-
-  //   if(!allMoviesinLocalStorage) {
-  //     setIsLoading(true);
-  //     moviesApi.getFilms()
-  //       .then(dataFilms => {
-  //         localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
-  //         const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
-  //         const byDuration = film => film.duration <= 40;
-  //         setMovies(isShortMovie
-  //           ? dataFilms.filter(byDuration).filter(byTitle)
-  //           : dataFilms.filter(byTitle)
-  //         );
-  //         // setDisplayCards(true);
-  //         setWasRequest(true);
-  //         console.log(dataFilms);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false);
-  //     })
-  //   } else {
-  //     setMovies(allMoviesinLocalStorage)
-  //   }
-  // };
-
 
   function handleSaveMovies (movie) {
     const jwt = localStorage.getItem('jwt');
@@ -154,7 +120,6 @@ function App() {
     }
   }, [currentUser]);
 
-  //сделать как-то попроще
   React.useEffect(() => {
     const token = localStorage.getItem('jwt');
     if(token) {
@@ -167,7 +132,6 @@ function App() {
                 setCurrentUser({email: res.email, name: res.name, _id: res._id});
                 setLoggedIn(true);
                 console.log(currentUser)
-                // history.push('/');
               } else {
                 setLoggedIn(false);
                 history.push('/');

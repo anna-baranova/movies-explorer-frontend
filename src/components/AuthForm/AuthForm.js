@@ -23,7 +23,8 @@ function AuthForm (props) {
         <Logo/>
         <h2 className="auth__title">{props.title}</h2>
         <form className='auth__form' id='authform' onSubmit={handleSubmit}>
-          {props.isNameNeeded && <label className='auth__input-label'>
+          {props.isNameNeeded && 
+          <label className='auth__input-label'>
             Имя
             <input 
               className='auth__input' 

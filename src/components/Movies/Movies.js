@@ -16,9 +16,6 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
 
     const handleGetFilms = (isShortMovie, searchText) => {
     
-    // const allMoviesinLocalStorage = JSON.parse(localStorage.getItem('BeatFilmsList'));
-
-    // if(!allMoviesinLocalStorage) {
       setIsLoading(true);
       moviesApi.getFilms()
         .then(dataFilms => {
@@ -39,9 +36,6 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
           setIsLoading(false);
           console.log("localStorage",localStorage)
       })
-    // } else {
-    //   setMovies(allMoviesinLocalStorage)
-    // }
   };
 
   return(

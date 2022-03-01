@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Validation() {
-  const [values, setValues] = React.useState({});
+function Validation(initialValues) {
+  const [values, setValues] = React.useState(initialValues);
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
