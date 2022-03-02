@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -10,6 +10,7 @@ import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import {register, login, checkToken} from '../../utils/Auth';
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
     localStorage.clear();
     setLoggedIn(false);
     setCurrentUser({});
-    history.push("/signin");
+    history.push('/')
   }
 
   function handleUpdateUser({name, email}) {
@@ -153,27 +154,32 @@ function App() {
             <Main loggedIn={loggedIn}/>
           </Route>
           <Route path="/signup">
-            <Register onRegister={handleRegisterUser}/>
+            {loggedIn ? <Redirect to='/' /> :
+              <Register onRegister={handleRegisterUser}/>}
           </Route>
           <Route path="/signin">
-            <Login onLogin={handleLoginUser}/>
+            {loggedIn ? <Redirect to='/' /> :
+              <Login onLogin={handleLoginUser}/>}
           </Route>
-          <Route path="/movies">
-            <Movies 
-              savedMovies={savedMovies}
-              onMovieSave={handleSaveMovies}
-              onMovieDelete={handleDeleteMovies}
-            />
-          </Route>
-          <Route path="/saved-movies">
-            <SavedMovies 
-              savedMovies={savedMovies} 
-              onMovieDelete={handleDeleteMovies}
-            />
-          </Route>
-          <Route path="/profile">
-            <Profile onUpdateUser={handleUpdateUser} onLogout={handleLogout} />
-          </Route>
+          <ProtectedRoute 
+            path="/movies"
+            component={Movies} 
+            savedMovies={savedMovies}
+            onMovieSave={handleSaveMovies}
+            onMovieDelete={handleDeleteMovies}
+          />
+          <ProtectedRoute 
+            path="/saved-movies"
+            component={SavedMovies} 
+            savedMovies={savedMovies} 
+            onMovieDelete={handleDeleteMovies}
+          />
+          <ProtectedRoute 
+            path="/profile"
+            component={Profile}
+            onUpdateUser={handleUpdateUser} 
+            onLogout={handleLogout} 
+          />
           <Route path="*">
             <NotFound />
           </Route>

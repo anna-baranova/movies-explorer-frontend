@@ -45,6 +45,7 @@ function AuthForm (props) {
               required
               name="email" 
               onChange={handleChange} 
+              pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
             />
           </label>
           <p className='email-input-error auth__error'>{errors.email || ''}</p>
@@ -56,6 +57,7 @@ function AuthForm (props) {
               required
               name="password" 
               onChange={handleChange}
+              minLength={5}
             />
           </label>
           <p className='password-input-error auth__error'>{errors.password || ''}</p>

@@ -72,9 +72,7 @@
   width: 100%;
   text-align: end;
   margin-bottom: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: wrap;
 }
 
 .profile__button{
@@ -103,16 +101,20 @@
   opacity: 1;
 }
 
-.profile__link{
+.profile__logout{
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
+  border: none;
+  background: none;
+  padding: 0;
   text-align: center;
   color: #FF4062;
   text-decoration: none;
   transition: opacity 0.2s ease-in-out;
 }
 
-.profile__link:hover{
+.profile__logout:hover{
+  cursor: pointer;
   opacity: 0.6;
 }

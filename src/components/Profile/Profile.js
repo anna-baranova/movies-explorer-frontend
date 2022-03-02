@@ -69,6 +69,7 @@ function Profile ({ onUpdateUser, onLogout }) {
                 onChange={handleChange}
                 disabled={!isEditing}
                 autoComplete="off"
+                pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
               />         
             </div>
             <span className='profile__input-error'>{errors.email || ''}</span>
@@ -85,7 +86,7 @@ function Profile ({ onUpdateUser, onLogout }) {
             onClick={handleEditClick}
           >Редактировать</button>)}
 
-          <Link className='profile__link' to="signin" onClick={onLogout}>Выйти из аккаунта</Link>
+          <button className='profile__logout' type="button" onClick={onLogout}>Выйти из аккаунта</button>
         </form>
     </section>
   )
