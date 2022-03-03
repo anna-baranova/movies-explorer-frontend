@@ -13,7 +13,7 @@ function SavedMovies ({ savedMovies, onMovieDelete }) {
   const [filteredSavedMovies, setFilteredSavedMovies] = React.useState([]);
 
   const [searchText, setSearchText] = React.useState('');
-  const [isShortMovie, setIsShortMovie] = React.useState(false);
+  const [isShortMovie, setIsShortMovie] = React.useState(true);
   const [wasRequest, setWasRequest] = React.useState(false);
 
 

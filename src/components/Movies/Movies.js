@@ -10,9 +10,11 @@ import moviesApi from '../../utils/MoviesApi';
 
 function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
 
-    const [movies, setMovies] = React.useState([]);
+    const [searchedMovies, setSearchedMovies] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [wasRequest, setWasRequest] = React.useState(false);
+    const [checkboxIsChecked, setCheckboxIsChecked] = React.useState(false);
+    const [searchInputText, setSearchInputText] = React.useState('');
 
     const handleGetFilms = (isShortMovie, searchText) => {
     
@@ -22,30 +24,53 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
           localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
           const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
           const byDuration = film => film.duration <= 40;
-          setMovies(isShortMovie
+          setSearchedMovies(isShortMovie
             ? dataFilms.filter(byDuration).filter(byTitle)
             : dataFilms.filter(byTitle)
           );
           setWasRequest(true);
-          console.log(dataFilms);
+          localStorage.setItem('searhText', JSON.stringify(searchText));
+          localStorage.setItem('checkboxStatus', JSON.stringify(isShortMovie));
+          // const text = JSON.parse(localStorage.getItem('searhText'))
+          // setCheckboxIsChecked(JSON.parse(localStorage.getItem('checkboxStatus')));
+          // setSearchInputText(text)
+          console.log("фильмы с BeatFilms", searchInputText);
         })
         .catch((err) => {
           console.log(err);
         })
         .finally(() => {
           setIsLoading(false);
-          console.log("localStorage",localStorage)
+          setWasRequest(false);
       })
   };
+
+  //сохранение отфильтрованных фильмов в localStorage
+  React.useEffect(() => {
+    if(wasRequest) {
+      localStorage.setItem('searchedMovies', JSON.stringify(searchedMovies));
+
+      console.log("найденные фильмы", searchedMovies)
+      console.log("фильмы в хранилище", JSON.parse(localStorage.searchedMovies))
+    }
+  }, [wasRequest])
+
+  //рендеринг отфильтрованных фильмов при перезагрузке страницы
+  React.useEffect(() => {
+    setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")))
+    setSearchInputText(JSON.parse(localStorage.getItem('searhText')))
+    
+    console.log('текст инпута', searchInputText)
+  }, [searchInputText]) //добавить состояние чекбокса после перезагрузки страницы 
 
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
-      <SearchForm onGetFilms={handleGetFilms} />
+      <SearchForm onGetFilms={handleGetFilms} searchInputText={searchInputText}/>
       <MoviesCardList 
-        movies={movies} 
+        movies={searchedMovies} 
         isOnSavedPage={false} 
         isLoading={isLoading} 
         wasRequest={wasRequest}

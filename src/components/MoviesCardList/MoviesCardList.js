@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
+import {amountToRender1025px, moreAmountToRender1025px, amountToRender561to1023px,
+  moreAmountToRender561to1023px, amountToRender560px, moreAmountToRender560px} from '../../utils/constants';
 
 function MoviesCardList ({ wasRequest, isLoading, movies, onMovieSave, onMovieDelete, savedMovies }) {
 
@@ -30,14 +32,14 @@ function MoviesCardList ({ wasRequest, isLoading, movies, onMovieSave, onMovieDe
   useEffect(() => {
     if (location === '/movies') {
       if (windowWidth <= 560) {
-        setAmountToRender(5);
-        setMoreAmountToRender(2);
+        setAmountToRender(amountToRender560px);
+        setMoreAmountToRender(moreAmountToRender560px);
       } else if (windowWidth <= 1024) {
-        setAmountToRender(8);
-        setMoreAmountToRender(2);
+        setAmountToRender(amountToRender561to1023px);
+        setMoreAmountToRender(moreAmountToRender561to1023px);
       } else if (windowWidth > 1024){
-        setAmountToRender(12);
-        setMoreAmountToRender(3);
+        setAmountToRender(amountToRender1025px);
+        setMoreAmountToRender(moreAmountToRender1025px);
       }
     } else {
       setAmountToRender(movies.length);
