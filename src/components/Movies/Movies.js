@@ -57,18 +57,24 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
 
   //рендеринг отфильтрованных фильмов при перезагрузке страницы
   React.useEffect(() => {
-    setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")))
+    // let cleanupFunction = false;
+    // if(!cleanupFunction) {
+    //   setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")))
+    // }
+    console.log('фильмы', JSON.parse(localStorage.getItem("searchedMovies")))
     setSearchInputText(JSON.parse(localStorage.getItem('searhText')))
+    setCheckboxIsChecked(JSON.parse(localStorage.getItem('checkboxStatus')));
     
     console.log('текст инпута', searchInputText)
-  }, [searchInputText]) //добавить состояние чекбокса после перезагрузки страницы 
+    // return () => cleanupFunction = true;
+  }, []) //добавить состояние чекбокса после перезагрузки страницы 
 
   return(
     <>
       <Header modifier='header_type_authed'>
         <Navigation />
       </Header>
-      <SearchForm onGetFilms={handleGetFilms} searchInputText={searchInputText}/>
+      <SearchForm onGetFilms={handleGetFilms} searchInputText={searchInputText} checkboxIsChecked={checkboxIsChecked}/>
       <MoviesCardList 
         movies={searchedMovies} 
         isOnSavedPage={false} 

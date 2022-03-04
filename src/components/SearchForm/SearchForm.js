@@ -2,9 +2,9 @@ import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './SearchForm.css';
 
-function SearchForm ({ onGetFilms, searchInputText }) {
+function SearchForm ({ onGetFilms, searchInputText, checkboxIsChecked }) {
   const [searchedFilm, setSearchedFilm] = React.useState(searchInputText);
-  const [isShortMovie, setIsShortMovie] = React.useState(false);
+  const [isShortMovie, setIsShortMovie] = React.useState(checkboxIsChecked);
   const location = window.location.pathname;
 
   const getSearchedFilm = (e) => {
@@ -37,7 +37,7 @@ function SearchForm ({ onGetFilms, searchInputText }) {
             <button className="search-form__button" type="submit"></button>
           </div>
         </form>
-        <FilterCheckbox setIsShortMovie={setIsShortMovie} />
+        <FilterCheckbox setIsShortMovie={setIsShortMovie} checkboxIsChecked={checkboxIsChecked}/>
       </section>
   )
 }
