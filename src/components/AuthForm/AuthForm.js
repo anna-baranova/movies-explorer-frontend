@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import './AuthForm.css'
 import { Validation } from "../../utils/functions"
+import Preloader from '../Preloader/Preloader';
 
 function AuthForm (props) {
   const { values, handleChange, resetFrom, errors, isValid } = Validation();
@@ -19,7 +20,7 @@ function AuthForm (props) {
 
   return(
     <section className='auth'>
-      <div className='auth__container'>
+      {props.isLoading ? <Preloader /> : <div className='auth__container'>
         <Logo/>
         <h2 className="auth__title">{props.title}</h2>
         <form className='auth__form' id='authform' onSubmit={handleSubmit}>
@@ -74,7 +75,7 @@ function AuthForm (props) {
             <Link className='auth__link' to={props.to}>{props.link}</Link>
           </p>
         </div>
-      </div>
+      </div>}
     </section>
   )
 }

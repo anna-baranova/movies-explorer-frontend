@@ -18,8 +18,10 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] =  React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   function handleRegisterUser({name, email, password}) {
+    setIsLoading(true)
     register(name, email, password)
       .then((res) => {
         if (res) {
@@ -27,13 +29,19 @@ function App() {
         }
       })
       .catch((e) => {
-        if (e.status === 400) {
+        if (e.status === 409) {
+          console.log(`Данный email используется другим пользователем: ${e}`)
+        } else {
           console.log(`Ошибка при регистрации пользователя: ${e}`);
         }
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
   function handleLoginUser({email, password}) {
+    setIsLoading(true);
     login(email, password)
       .then((res) => {
         console.log("loginUser", res)
@@ -47,7 +55,10 @@ function App() {
         if (e.status === 400) {
           console.log(`Ошибка при авторизации пользователя: ${e}`);
         }
-    });
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   function handleLogout() {
@@ -155,11 +166,11 @@ function App() {
           </Route>
           <Route path="/signup">
             {loggedIn ? <Redirect to='/' /> :
-              <Register onRegister={handleRegisterUser}/>}
+              <Register onRegister={handleRegisterUser} isLoading={isLoading}/>}
           </Route>
           <Route path="/signin">
             {loggedIn ? <Redirect to='/' /> :
-              <Login onLogin={handleLoginUser}/>}
+              <Login onLogin={handleLoginUser} isLoading={isLoading}/>}
           </Route>
           <ProtectedRoute 
             path="/movies"
