@@ -11,6 +11,7 @@ import moviesApi from '../../utils/MoviesApi';
 function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
 
     const [searchedMovies, setSearchedMovies] = React.useState([]);
+    const [filteredMovies, setFilteredMovies] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [wasRequest, setWasRequest] = React.useState(false);
     const [checkboxIsChecked, setCheckboxIsChecked] = React.useState(false);
@@ -28,46 +29,42 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
             ? dataFilms.filter(byDuration).filter(byTitle)
             : dataFilms.filter(byTitle)
           );
-          setWasRequest(true);
           localStorage.setItem('searhText', JSON.stringify(searchText));
           localStorage.setItem('checkboxStatus', JSON.stringify(isShortMovie));
-          // const text = JSON.parse(localStorage.getItem('searhText'))
-          // setCheckboxIsChecked(JSON.parse(localStorage.getItem('checkboxStatus')));
-          // setSearchInputText(text)
-          console.log("фильмы с BeatFilms", searchInputText);
+          console.log("фильмы с BeatFilms", dataFilms);
         })
         .catch((err) => {
           console.log(err);
         })
         .finally(() => {
           setIsLoading(false);
-          setWasRequest(false);
+          setWasRequest(true);
       })
   };
-
-  //сохранение отфильтрованных фильмов в localStorage
+  // сохранение отфильтрованных фильмов в localStorage
   React.useEffect(() => {
     if(wasRequest) {
       localStorage.setItem('searchedMovies', JSON.stringify(searchedMovies));
 
-      console.log("найденные фильмы", searchedMovies)
-      console.log("фильмы в хранилище", JSON.parse(localStorage.searchedMovies))
+      // console.log("хранилище", localStorage)
+      // console.log("фильмы в хранилище", JSON.parse(localStorage.searchedMovies))
     }
   }, [wasRequest])
 
   //рендеринг отфильтрованных фильмов при перезагрузке страницы
   React.useEffect(() => {
-    // let cleanupFunction = false;
-    // if(!cleanupFunction) {
-    //   setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")))
-    // }
-    console.log('фильмы', JSON.parse(localStorage.getItem("searchedMovies")))
-    setSearchInputText(JSON.parse(localStorage.getItem('searhText')))
-    setCheckboxIsChecked(JSON.parse(localStorage.getItem('checkboxStatus')));
-    
-    console.log('текст инпута', searchInputText)
-    // return () => cleanupFunction = true;
-  }, []) //добавить состояние чекбокса после перезагрузки страницы 
+    console.log('отфильтрованные фильмы', JSON.parse(localStorage.getItem("searchedMovies")))
+    if(JSON.parse(localStorage.getItem("searchedMovies"))) {
+      setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")))
+    }
+    if(JSON.parse(localStorage.getItem("searhText"))) {
+      setSearchInputText(JSON.parse(localStorage.getItem("searhText")))
+    }
+    if(JSON.parse(localStorage.getItem("checkboxStatus"))) {
+      setCheckboxIsChecked(JSON.parse(localStorage.getItem("checkboxStatus")))
+    }    
+    console.log('отфильтрованные фильмы1', searchedMovies)
+  }, [setCheckboxIsChecked, setSearchInputText])
 
   return(
     <>

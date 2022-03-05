@@ -43,6 +43,7 @@ function MoviesCardList ({ wasRequest, isLoading, movies, onMovieSave, onMovieDe
       }
     } else {
       setAmountToRender(movies.length);
+      console.log(movies.length)
     }
   }, [windowWidth, location, movies.length]);
 
