@@ -92,6 +92,11 @@
   opacity: 0.6;
 }
 
+.profile__button_disabled:hover{
+  cursor:default;
+  opacity: 1;
+}
+
 .profile__save-button_inactive{
   color: #A0A0A0;
 }

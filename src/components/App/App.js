@@ -29,7 +29,7 @@ function App() {
         }
       })
       .catch((e) => {
-        if (e.status === 409) {
+        if (e === "Ошибка: 409") {
           console.log(`Данный email используется другим пользователем: ${e}`)
         } else {
           console.log(`Ошибка при регистрации пользователя: ${e}`);
@@ -52,7 +52,9 @@ function App() {
         }
       })
       .catch((e) => {
-        if (e.status === 400) {
+        if (e === "Ошибка: 401") {
+          console.log(`Неправильная почта или пароль: ${e}`);
+        } else {
           console.log(`Ошибка при авторизации пользователя: ${e}`);
         }
       })
@@ -75,7 +77,7 @@ function App() {
         console.log("updatedUser", res)
         setCurrentUser({email: res.email, name: res.name, _id: res._id});
       })
-        .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
+      .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
   }
 
   function handleSaveMovies (movie) {
