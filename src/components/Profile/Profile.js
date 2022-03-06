@@ -42,7 +42,7 @@ function Profile ({ onUpdateUser, onLogout }) {
 
   React.useEffect(() => {
     handleChangingData()
-    console.log("1",(values.name === currentUser.name && values.email === currentUser.email))
+    //console.log("1",(values.name === currentUser.name && values.email === currentUser.email))
   }, [values]);
 
   return(

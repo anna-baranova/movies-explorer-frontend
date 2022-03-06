@@ -5,13 +5,14 @@ import './AuthForm.css'
 import { Validation } from "../../utils/functions"
 import Preloader from '../Preloader/Preloader';
 
-function AuthForm (props) {
+function AuthForm ({ isLoading, handleSubmitForm, title, isNameNeeded, button, 
+  text, to, link, authError }) {
   const { values, handleChange, resetFrom, errors, isValid } = Validation();
   const isButtonInactive = !isValid;
 
   const handleSubmit = (e) => {
 		e.preventDefault();
-		props.handleSubmitForm(values);
+		handleSubmitForm(values);
 	}
 
   React.useEffect(() => {
@@ -20,11 +21,11 @@ function AuthForm (props) {
 
   return(
     <section className='auth'>
-      {props.isLoading ? <Preloader /> : <div className='auth__container'>
+      {isLoading ? <Preloader /> : <div className='auth__container'>
         <Logo/>
-        <h2 className="auth__title">{props.title}</h2>
+        <h2 className="auth__title">{title}</h2>
         <form className='auth__form' id='authform' onSubmit={handleSubmit}>
-          {props.isNameNeeded && 
+          {isNameNeeded && 
           <label className='auth__input-label'>
             Имя
             <input 
@@ -37,7 +38,7 @@ function AuthForm (props) {
               onChange={handleChange} 
             />
           </label>}
-          <p className='name-input-error auth__error'>{errors.name || ''}</p>
+          <p className='name-input-error auth-input__error'>{errors.name || ''}</p>
           <label className='auth__input-label'>
             E-mail
             <input 
@@ -49,7 +50,7 @@ function AuthForm (props) {
               pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
             />
           </label>
-          <p className='email-input-error auth__error'>{errors.email || ''}</p>
+          <p className='email-input-error auth-input__error'>{errors.email || ''}</p>
           <label className='auth__input-label'>
             Пароль
             <input 
@@ -61,18 +62,20 @@ function AuthForm (props) {
               minLength={5}
             />
           </label>
-          <p className='password-input-error auth__error'>{errors.password || ''}</p>
+          <p className='password-input-error auth-input__error'>{errors.password || ''}</p>
         </form>
+        {/* уведомление об ошибке */}
+        {authError && <p className='auth__error'>{authError}</p>}
         <div className='auth__buttons'>
           <button 
             className={`auth__button ${isButtonInactive && "auth__button_inactive"}` }
             type='submit' 
             form='authform'
             disabled={isButtonInactive}>
-              {props.button}
+              {button}
             </button>
-          <p className='auth__text'>{props.text}
-            <Link className='auth__link' to={props.to}>{props.link}</Link>
+          <p className='auth__text'>{text}
+            <Link className='auth__link' to={to}>{link}</Link>
           </p>
         </div>
       </div>}

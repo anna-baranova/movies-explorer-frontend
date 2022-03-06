@@ -40,4 +40,10 @@ function searchFilter(movies, isShortMovie, searchText) {
   return filteredMovies;
 }
 
-export { searchFilter, Validation };
+function clearError(setError) {
+  setTimeout(() => {
+    setError('')
+  }, 3000)
+}
+
+export { searchFilter, Validation, clearError };

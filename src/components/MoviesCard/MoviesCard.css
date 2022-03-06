@@ -68,6 +68,8 @@
   object-fit: cover;
   object-position: center;
   border-radius: 6px 6px 0 0;
+
+  
 }
 
 @media screen and (max-width: 1024px) {

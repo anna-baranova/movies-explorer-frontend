@@ -12,6 +12,7 @@ import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import {register, login, checkToken} from '../../utils/Auth';
+import {clearError} from '../../utils/functions';
 
 function App() {
   const history = new useHistory();
@@ -19,6 +20,8 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] =  React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [authError, setAuthError] = React.useState('');
+
 
   function handleRegisterUser({name, email, password}) {
     setIsLoading(true)
@@ -30,8 +33,12 @@ function App() {
       })
       .catch((e) => {
         if (e === "Ошибка: 409") {
+          setAuthError('Данный email используется другим пользователем')
+          clearError(setAuthError);
           console.log(`Данный email используется другим пользователем: ${e}`)
         } else {
+          setAuthError('Ошибка при регистрации пользователя')
+          clearError(setAuthError);
           console.log(`Ошибка при регистрации пользователя: ${e}`);
         }
       })
@@ -53,8 +60,12 @@ function App() {
       })
       .catch((e) => {
         if (e === "Ошибка: 401") {
+          setAuthError('Неправильная почта или пароль')
+          clearError(setAuthError);
           console.log(`Неправильная почта или пароль: ${e}`);
         } else {
+          setAuthError('Ошибка при авторизации пользователя')
+          clearError(setAuthError);
           console.log(`Ошибка при авторизации пользователя: ${e}`);
         }
       })
@@ -62,6 +73,17 @@ function App() {
         setIsLoading(false)
       })
   }
+
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setAuthError('');
+  //   }, 3000);
+    
+  //   // To clear or cancel a timer, you call the clearTimeout(); method, 
+  //   // passing in the timer object that you created into clearTimeout().
+    
+  //   return () => clearTimeout(timer);
+  // }, []);  
 
   function handleLogout() {
     localStorage.clear();
@@ -168,11 +190,19 @@ function App() {
           </Route>
           <Route path="/signup">
             {loggedIn ? <Redirect to='/' /> :
-              <Register onRegister={handleRegisterUser} isLoading={isLoading}/>}
+              <Register 
+                onRegister={handleRegisterUser} 
+                isLoading={isLoading} 
+                authError={authError}
+              />}
           </Route>
           <Route path="/signin">
             {loggedIn ? <Redirect to='/' /> :
-              <Login onLogin={handleLoginUser} isLoading={isLoading}/>}
+              <Login 
+                onLogin={handleLoginUser} 
+                isLoading={isLoading} 
+                authError={authError}
+              />}
           </Route>
           <ProtectedRoute 
             path="/movies"

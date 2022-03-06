@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Login.css'
 
-function Login ({onLogin, isLoading}) {
+function Login ({onLogin, isLoading, authError}) {
   return(
       <AuthForm 
         title="Рады видеть!" 
@@ -13,6 +13,7 @@ function Login ({onLogin, isLoading}) {
         isNameNeeded={false}
         handleSubmitForm={onLogin}
         isLoading={isLoading}
+        authError={authError}
       />
   )
 }
