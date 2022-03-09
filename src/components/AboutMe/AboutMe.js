@@ -2,7 +2,7 @@ import React from 'react';
 import Section from '../Section/Section';
 import './AboutMe.css'
 import studentPicturePath from '../../images/vitaliy.png'
-import { facebook, github } from '../../utils/constants'
+import { FACEBOOK_URL, GITHUB_URL } from '../../utils/constants'
 
 function AboutMe () {
   return (
@@ -19,10 +19,10 @@ function AboutMe () {
           </p>
           <ul className='about-me__social'>
             <li className='about-me__links'>
-              <a className='about-me__link' target='_blank' rel='noreferrer' href={facebook}>Facebook</a>
+              <a className='about-me__link' target='_blank' rel='noreferrer' href={FACEBOOK_URL}>Facebook</a>
             </li>
             <li className='about-me__links'>
-              <a className='about-me__link' target='_blank' rel='noreferrer' href={github}>Github</a>
+              <a className='about-me__link' target='_blank' rel='noreferrer' href={GITHUB_URL}>Github</a>
             </li>
           </ul>
         </div>

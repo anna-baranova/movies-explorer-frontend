@@ -12,7 +12,7 @@ import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import {register, login, checkToken} from '../../utils/Auth';
-import {clearError} from '../../utils/functions';
+import {clearAlert} from '../../utils/functions';
 
 function App() {
   const history = new useHistory();
@@ -21,6 +21,7 @@ function App() {
   const [savedMovies, setSavedMovies] =  React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [authError, setAuthError] = React.useState('');
+  const [sucsessMessage, setSuccessMessage] = React.useState('');
 
 
   function handleRegisterUser({name, email, password}) {
@@ -34,11 +35,11 @@ function App() {
       .catch((e) => {
         if (e === "Ошибка: 409") {
           setAuthError('Данный email используется другим пользователем')
-          clearError(setAuthError);
+          clearAlert(setAuthError);
           console.log(`Данный email используется другим пользователем: ${e}`)
         } else {
           setAuthError('Ошибка при регистрации пользователя')
-          clearError(setAuthError);
+          clearAlert(setAuthError);
           console.log(`Ошибка при регистрации пользователя: ${e}`);
         }
       })
@@ -61,11 +62,11 @@ function App() {
       .catch((e) => {
         if (e === "Ошибка: 401") {
           setAuthError('Неправильная почта или пароль')
-          clearError(setAuthError);
+          clearAlert(setAuthError);
           console.log(`Неправильная почта или пароль: ${e}`);
         } else {
           setAuthError('Ошибка при авторизации пользователя')
-          clearError(setAuthError);
+          clearAlert(setAuthError);
           console.log(`Ошибка при авторизации пользователя: ${e}`);
         }
       })
@@ -98,6 +99,8 @@ function App() {
       .then(res => {
         console.log("updatedUser", res)
         setCurrentUser({email: res.email, name: res.name, _id: res._id});
+        setSuccessMessage('Данные успешно обновлены');
+        clearAlert(setSuccessMessage);
       })
       .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
   }
@@ -222,6 +225,7 @@ function App() {
             component={Profile}
             onUpdateUser={handleUpdateUser} 
             onLogout={handleLogout} 
+            sucsessMessage={sucsessMessage}
           />
           <Route path="*">
             <NotFound />

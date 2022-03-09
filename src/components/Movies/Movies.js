@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 import moviesApi from '../../utils/MoviesApi';
+import { SHORT_MOVIE_DURATION } from "../../utils/constants";
 
 
 function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
@@ -24,7 +25,7 @@ function Movies ({ onMovieSave, onMovieDelete, savedMovies}) {
         .then(dataFilms => {
           localStorage.setItem('BeatFilmsList', JSON.stringify(dataFilms));
           const byTitle = film => film.nameRU.toLowerCase().includes(searchText.toLowerCase());
-          const byDuration = film => film.duration <= 40;
+          const byDuration = film => film.duration <= SHORT_MOVIE_DURATION;
           setSearchedMovies(isShortMovie
             ? dataFilms.filter(byDuration).filter(byTitle)
             : dataFilms.filter(byTitle)

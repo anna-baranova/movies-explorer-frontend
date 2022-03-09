@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
-import { Link } from 'react-router-dom';
 import './Profile.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { Validation } from '../../utils/functions';
 
-function Profile ({ onUpdateUser, onLogout }) {
+function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
 
   const currentUser = useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = React.useState(false);
@@ -83,7 +82,7 @@ function Profile ({ onUpdateUser, onLogout }) {
             </div>
             <span className='profile__input-error'>{errors.email || ''}</span>
           </fieldset>
-
+          {sucsessMessage && <p className='profile__message'>{sucsessMessage}</p>}
           {isEditing ? 
           (<button 
             className={`profile__button ${!newUserData && "profile__button_disabled"}`}

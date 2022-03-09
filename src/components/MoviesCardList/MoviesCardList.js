@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
-import {amountToRender1025px, moreAmountToRender1025px, amountToRender561to1023px,
-  moreAmountToRender561to1023px, amountToRender560px, moreAmountToRender560px} from '../../utils/constants';
+import {AMOUNT_TO_RENDER_1025PX, MORE_AMOUNT_TO_RENDER_1025PX, AMOUNT_TO_RENDER_561_TO_1024PX,
+  MORE_AMOUNT_TO_RENDER_561_TO_1024PX, AMOUNT_TO_RENDER_560PX, MORE_AMOUNT_TO_RENDER_560PX} from '../../utils/constants';
 
 function MoviesCardList ({ wasRequest, isLoading, movies, onMovieSave, onMovieDelete, savedMovies }) {
 
@@ -32,14 +32,14 @@ function MoviesCardList ({ wasRequest, isLoading, movies, onMovieSave, onMovieDe
   useEffect(() => {
     if (location === '/movies') {
       if (windowWidth <= 560) {
-        setAmountToRender(amountToRender560px);
-        setMoreAmountToRender(moreAmountToRender560px);
+        setAmountToRender(AMOUNT_TO_RENDER_560PX);
+        setMoreAmountToRender(MORE_AMOUNT_TO_RENDER_560PX);
       } else if (windowWidth <= 1024) {
-        setAmountToRender(amountToRender561to1023px);
-        setMoreAmountToRender(moreAmountToRender561to1023px);
+        setAmountToRender(AMOUNT_TO_RENDER_561_TO_1024PX);
+        setMoreAmountToRender(MORE_AMOUNT_TO_RENDER_561_TO_1024PX);
       } else if (windowWidth > 1024){
-        setAmountToRender(amountToRender1025px);
-        setMoreAmountToRender(moreAmountToRender1025px);
+        setAmountToRender(AMOUNT_TO_RENDER_1025PX);
+        setMoreAmountToRender(MORE_AMOUNT_TO_RENDER_1025PX);
       }
     } else {
       setAmountToRender(movies.length);
