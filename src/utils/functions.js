@@ -28,6 +28,7 @@ function Validation() {
 
 function searchFilter(movies, isShortMovie, searchText) {
   let allMovies = movies;
+  console.log('1', allMovies)
   let filteredMovies 
 
   if (isShortMovie) {
