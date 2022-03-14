@@ -8,7 +8,7 @@ const register = (name, email, password) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    credentials: 'include',
+    // credentials: 'include',
     body: JSON.stringify({ name, email, password }),
   }).then((res) => {
     if (res.status === 200 || res.status === 201) {
@@ -25,7 +25,7 @@ const login = (email, password) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    credentials: 'include',
+    // credentials: 'include',
     body: JSON.stringify({ email, password }),
   })
     .then((res) => {
@@ -49,7 +49,7 @@ const checkToken = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    credentials: 'include',
+    // credentials: 'include',
   }).then((res) => {
     if (res.status === 200) {
       return res.json();
@@ -63,7 +63,7 @@ const logout = () => {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: 'include',
+    // credentials: 'include',
   })
     .then((res) => {
       if (res.status === 200) {

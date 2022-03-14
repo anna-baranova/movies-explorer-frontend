@@ -15,7 +15,7 @@ class MainApi {
   getUserData(jwt) {
     return fetch (`${this._baseUrl}/users/me`, {
       headers: {authorization: `Bearer ${jwt}`},
-      credentials: 'include',
+      // credentials: 'include',
     })
     .then(res => this._getResponseData(res))
   }    
@@ -25,7 +25,7 @@ class MainApi {
       headers: {
         authorization: `Bearer ${jwt}`
       },
-      credentials: 'include',
+      // credentials: 'include',
       })
       .then(res => this._getResponseData(res))
   };
@@ -37,7 +37,7 @@ class MainApi {
         authorization: `Bearer ${jwt}`,
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      // credentials: 'include',
       body: JSON.stringify({
         name: name,
         email: email
@@ -53,7 +53,7 @@ class MainApi {
         authorization: `Bearer ${jwt}`,
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      // credentials: 'include',
       body: JSON.stringify({
         country: movie.country,
         director: movie.director,
@@ -78,7 +78,7 @@ class MainApi {
         authorization: `Bearer ${jwt}`,
         'Content-Type': 'application/json'
       },
-      credentials: 'include',
+      // credentials: 'include',
     })
     .then(res => this._getResponseData(res))
   }
