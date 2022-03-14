@@ -23,27 +23,34 @@ function MoviesCard ({ movieInfo, onMovieDelete, onMovieSave, isSavedMovie, save
 
   return(
     <section className="movie-card">
-      <a 
-        href={movieInfo.trailerLink}
-        target="_blank"
-        rel="noreferrer">
+
         <Switch>
           <Route path="/movies">
-            <img
-              className="movie-card__image"
-              src={'https://api.nomoreparties.co' + movieInfo.image.url}
-              alt={movieInfo.nameRu}
-            />
+            <a 
+              href={movieInfo.trailerLink}
+              target="_blank"
+              rel="noreferrer">
+              <img
+                className="movie-card__image"
+                src={'https://api.nomoreparties.co' + movieInfo.image.url}
+                alt={movieInfo.nameRu}
+              />
+            </a>
           </Route>
           <Route path="/saved-movies">
-            <img
-              className="movie-card__image"
-              src={movieInfo.image}
-              alt={movieInfo.nameRu}
-            />
+            <a 
+              href={movieInfo.trailer}
+              target="_blank"
+              rel="noreferrer">
+              <img
+                className="movie-card__image"
+                src={movieInfo.image}
+                alt={movieInfo.nameRu}
+              />
+            </a>
           </Route>
         </Switch>
-      </a>
+      
       <div className="movie-card__container">
         <p className="movie-card__title">{movieInfo.nameRU}</p>
         <Switch>
