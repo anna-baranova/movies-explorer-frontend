@@ -14,7 +14,7 @@ function Validation() {
     setIsValid(input.closest("form").checkValidity());
   };
 
-  const resetFrom = React.useCallback(
+  const resetForm = React.useCallback(
     (newValues = {}, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
       setErrors(newErrors);
@@ -23,7 +23,7 @@ function Validation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, resetFrom, errors, isValid };
+  return { values, handleChange, resetForm, errors, isValid };
 }
 
 function searchFilter(movies, isShortMovie, searchText) {
@@ -41,10 +41,4 @@ function searchFilter(movies, isShortMovie, searchText) {
   return filteredMovies;
 }
 
-function clearAlert(setAlert) {
-  setTimeout(() => {
-    setAlert('')
-  }, 3000)
-}
-
-export { searchFilter, Validation, clearAlert };
+export { searchFilter, Validation };

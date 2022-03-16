@@ -7,7 +7,7 @@ import Preloader from '../Preloader/Preloader';
 
 function AuthForm ({ isLoading, handleSubmitForm, title, isNameNeeded, button, 
   text, to, link, authError }) {
-  const { values, handleChange, resetFrom, errors, isValid } = Validation();
+  const { values, handleChange, resetForm, errors, isValid } = Validation();
   const isButtonInactive = !isValid;
 
   const handleSubmit = (e) => {
@@ -16,8 +16,10 @@ function AuthForm ({ isLoading, handleSubmitForm, title, isNameNeeded, button,
 	}
 
   React.useEffect(() => {
-    resetFrom({}, {}, false);
-  }, [resetFrom]);
+    resetForm({}, {}, false);
+  }, [resetForm]);
+
+
 
   return(
     <section className='auth'>

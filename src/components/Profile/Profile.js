@@ -10,7 +10,7 @@ function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
   const currentUser = useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = React.useState(false);
   const [newUserData, setNewUserData] = React.useState(false);
-  const {values, handleChange, resetFrom, errors, isValid} = Validation({
+  const {values, handleChange, resetForm, errors, isValid} = Validation({
     name: currentUser.name,
     email: currentUser.email
 });
@@ -25,7 +25,7 @@ function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
 
   function handleEditClick(e) {
     e.preventDefault();
-    resetFrom(currentUser, {}, false);
+    resetForm(currentUser, {}, false);
     setIsEditing(true);
   }
 
@@ -35,9 +35,9 @@ function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
 
   React.useEffect(() => {
     if (currentUser) {
-      resetFrom(currentUser, {}, false);
+      resetForm(currentUser, {}, false);
     }
-  }, [currentUser, resetFrom]);
+  }, [currentUser, resetForm]);
 
   React.useEffect(() => {
     handleChangingData()

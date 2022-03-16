@@ -8,11 +8,14 @@ import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import InfoTooltip from '../InfoToolTip/InfoTooltip';
 import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import {register, login, checkToken} from '../../utils/Auth';
-import {clearAlert} from '../../utils/functions';
+import authOkPath from "../../images/auth_ok.svg"
+import authErrPath from "../../images/auth_err.svg"
+
 
 function App() {
   const history = new useHistory();
@@ -22,7 +25,23 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [authError, setAuthError] = React.useState('');
   const [sucsessMessage, setSuccessMessage] = React.useState('');
+  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+  const [popupImage, setPopupImage] = React.useState('');
+  const [popupMessage, setPopupMessage] = React.useState('');
 
+
+
+  function showError(message) {
+    setPopupImage(authErrPath);
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  }
+
+  function showSuccess(message) {
+    setPopupImage(authOkPath);
+    setPopupMessage(message);
+    setIsPopupOpen(true);
+  }
 
   function handleRegisterUser({name, email, password}) {
     setIsLoading(true)
@@ -34,12 +53,10 @@ function App() {
       })
       .catch((e) => {
         if (e === "Ошибка: 409") {
-          setAuthError('Данный email используется другим пользователем')
-          clearAlert(setAuthError);
+          showError('Данный email используется другим пользователем')
           console.log(`Данный email используется другим пользователем: ${e}`)
         } else {
-          setAuthError('Ошибка при регистрации пользователя')
-          clearAlert(setAuthError);
+          showError('Ошибка при регистрации пользователя')
           console.log(`Ошибка при регистрации пользователя: ${e}`);
         }
       })
@@ -61,12 +78,10 @@ function App() {
       })
       .catch((e) => {
         if (e === "Ошибка: 401") {
-          setAuthError('Неправильная почта или пароль')
-          clearAlert(setAuthError);
+          showError('Неправильная почта или пароль')
           console.log(`Неправильная почта или пароль: ${e}`);
         } else {
-          setAuthError('Ошибка при авторизации пользователя')
-          clearAlert(setAuthError);
+          showError('Ошибка при авторизации пользователя')
           console.log(`Ошибка при авторизации пользователя: ${e}`);
         }
       })
@@ -74,17 +89,6 @@ function App() {
         setIsLoading(false)
       })
   }
-
-  // React.useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setAuthError('');
-  //   }, 3000);
-    
-  //   // To clear or cancel a timer, you call the clearTimeout(); method, 
-  //   // passing in the timer object that you created into clearTimeout().
-    
-  //   return () => clearTimeout(timer);
-  // }, []);  
 
   function handleLogout() {
     localStorage.clear();
@@ -99,10 +103,12 @@ function App() {
       .then(res => {
         console.log("updatedUser", res)
         setCurrentUser({email: res.email, name: res.name, _id: res._id});
-        setSuccessMessage('Данные успешно обновлены');
-        clearAlert(setSuccessMessage);
+        showSuccess('Данные успешно обновлены')
       })
-      .catch(e => console.log(`Ошибка при изменении данных пользователя: ${e}`))
+      .catch(e => {
+        showError('Ошибка при изменении данных пользователя')
+        console.log(`Ошибка при изменении данных пользователя: ${e}`)
+      })
   }
 
   function handleSaveMovies (movie) {
@@ -116,6 +122,7 @@ function App() {
         console.log("savedMovies", savedMovies)
       })
       .catch(err => {
+        showError('Ошибка при сохранении фильма')
         console.log(err)
       })
   }
@@ -127,6 +134,7 @@ function App() {
       setSavedMovies((movies) => movies.filter((m) => m._id !== movie._id));
     })
     .catch(err => {
+      showError('Ошибка при удалении фильма')
       console.log(err)
     })
   }
@@ -141,6 +149,7 @@ function App() {
           }
         })
         .catch(err => {
+          showError('Ошибка при получении данных пользователя')
           console.log(err)
         })
     }
@@ -154,6 +163,7 @@ function App() {
           setSavedMovies(data.filter((movie) => movie.owner === currentUser._id));
         })
         .catch(err => {
+          showError('Ошибка при загрузке сохраненных фильмов фильмов')
           console.log(err)
         })
     }
@@ -177,6 +187,7 @@ function App() {
               }
             })
             .catch((err) => {
+              showError('Ошибка при получении токена пользователя')
               console.log(err)
             })
       }
@@ -186,7 +197,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-          <div className="page">  
+      <div className="page">  
         <Switch>
           <Route exact path="/">
             <Main loggedIn={loggedIn}/>
@@ -232,6 +243,13 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+        <InfoTooltip 
+          isOpen={isPopupOpen}
+          setIsOpen={setIsPopupOpen}
+          image={popupImage}
+          message={popupMessage}
+        />
+
     </div>
     </CurrentUserContext.Provider>
 
