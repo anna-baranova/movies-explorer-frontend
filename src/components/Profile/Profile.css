@@ -75,16 +75,6 @@
   white-space: wrap;
 }
 
-.profile__message{
-  margin: 100px auto 0 auto;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: green;
-  position: absolute;
-  animation: fadeOut ease-in-out 3s;
-}
-
 @keyframes fadeOut {
   0% {opacity:1;}
   100% {opacity:0;}

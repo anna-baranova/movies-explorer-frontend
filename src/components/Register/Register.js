@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Register.css'
 
-function Register ({ onRegister, isLoading, authError }) {
+function Register ({ onRegister, isLoading }) {
   return(
       <AuthForm 
         title="Добро пожаловать!" 
@@ -13,7 +13,6 @@ function Register ({ onRegister, isLoading, authError }) {
         isNameNeeded={true}
         handleSubmitForm={onRegister}
         isLoading={isLoading}
-        authError={authError}
       />
   )
 }

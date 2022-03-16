@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import './Profile.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { Validation } from '../../utils/functions';
 
-function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
+function Profile ({ onUpdateUser, onLogout }) {
 
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = React.useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = React.useState(false);
   const [newUserData, setNewUserData] = React.useState(false);
   const {values, handleChange, resetForm, errors, isValid} = Validation({
@@ -82,7 +82,6 @@ function Profile ({ onUpdateUser, onLogout, sucsessMessage }) {
             </div>
             <span className='profile__input-error'>{errors.email || ''}</span>
           </fieldset>
-          {sucsessMessage && <p className='profile__message'>{sucsessMessage}</p>}
           {isEditing ? 
           (<button 
             className={`profile__button ${!newUserData && "profile__button_disabled"}`}

@@ -6,7 +6,7 @@ import { Validation } from "../../utils/functions"
 import Preloader from '../Preloader/Preloader';
 
 function AuthForm ({ isLoading, handleSubmitForm, title, isNameNeeded, button, 
-  text, to, link, authError }) {
+  text, to, link }) {
   const { values, handleChange, resetForm, errors, isValid } = Validation();
   const isButtonInactive = !isValid;
 
@@ -66,8 +66,6 @@ function AuthForm ({ isLoading, handleSubmitForm, title, isNameNeeded, button,
           </label>
           <p className='password-input-error auth-input__error'>{errors.password || ''}</p>
         </form>
-        {/* уведомление об ошибке */}
-        {authError && <p className='auth__error'>{authError}</p>}
         <div className='auth__buttons'>
           <button 
             className={`auth__button ${isButtonInactive && "auth__button_inactive"}` }

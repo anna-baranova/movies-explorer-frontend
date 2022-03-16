@@ -23,8 +23,6 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] =  React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [authError, setAuthError] = React.useState('');
-  const [sucsessMessage, setSuccessMessage] = React.useState('');
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [popupImage, setPopupImage] = React.useState('');
   const [popupMessage, setPopupMessage] = React.useState('');
@@ -207,7 +205,6 @@ function App() {
               <Register 
                 onRegister={handleRegisterUser} 
                 isLoading={isLoading} 
-                authError={authError}
               />}
           </Route>
           <Route path="/signin">
@@ -215,7 +212,6 @@ function App() {
               <Login 
                 onLogin={handleLoginUser} 
                 isLoading={isLoading} 
-                authError={authError}
               />}
           </Route>
           <ProtectedRoute 
@@ -237,7 +233,6 @@ function App() {
             component={Profile}
             onUpdateUser={handleUpdateUser} 
             onLogout={handleLogout} 
-            sucsessMessage={sucsessMessage}
           />
           <Route path="*">
             <NotFound />
