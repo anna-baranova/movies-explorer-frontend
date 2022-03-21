@@ -2,16 +2,18 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Login.css'
 
-function Login () {
+function Login ({onLogin, isLoading}) {
   return(
       <AuthForm 
         title="Рады видеть!" 
-        button="Войти"
+        button="Войти" 
         text="Еще не зарегистрированы?"
         link="Регистрация"
         to="signup"
-      >
-      </AuthForm>
+        isNameNeeded={false}
+        handleSubmitForm={onLogin}
+        isLoading={isLoading}
+      />
   )
 }
 

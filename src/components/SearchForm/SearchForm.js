@@ -2,9 +2,10 @@ import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import './SearchForm.css';
 
-function SearchForm (props) {
-  const [searchedFilm, setSearchedFilm] = React.useState('');
-  const [isShortMovie, setIsShortMovie] = React.useState(true);
+function SearchForm ({ onGetFilms, searchInputText, checkboxIsChecked }) {
+  const [searchedFilm, setSearchedFilm] = React.useState(searchInputText);
+  const [isShortMovie, setIsShortMovie] = React.useState(checkboxIsChecked);
+  const location = window.location.pathname;
 
   const getSearchedFilm = (e) => {
     setSearchedFilm(e.target.value);
@@ -12,8 +13,14 @@ function SearchForm (props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!!searchedFilm) props.onGetFilms(isShortMovie, searchedFilm);
+    onGetFilms(isShortMovie, searchedFilm);
   };
+
+  React.useEffect(() => {
+    if(location==="/movies") {
+      setSearchedFilm(searchInputText)
+    }
+  }, [searchInputText])
 
   return(
       <section className="search">
@@ -22,7 +29,7 @@ function SearchForm (props) {
             <input 
               className="search-form__input" 
               placeholder="Фильм" 
-              value={searchedFilm} 
+              value={searchedFilm || ''} 
               onChange={getSearchedFilm} 
               required
             >
@@ -30,7 +37,7 @@ function SearchForm (props) {
             <button className="search-form__button" type="submit"></button>
           </div>
         </form>
-        <FilterCheckbox setIsShortMovie={setIsShortMovie} />
+        <FilterCheckbox setIsShortMovie={setIsShortMovie} checkboxIsChecked={checkboxIsChecked}/>
       </section>
   )
 }

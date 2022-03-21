@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  /* min-width: 410px; */
+  width: 410px;
 }
 
 
@@ -33,10 +33,11 @@
 
 .profile__input-container{
   display: flex;
+  grid-gap: 40px;
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 16px;
-  margin-bottom: 17px;
+  margin-bottom: 7px;
   border-bottom: 1px solid #E8E8E8;;
 }
 
@@ -47,19 +48,36 @@
 }
 
 .profile__input-label{
-  width: 100%;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
+  white-space: nowrap;
 }
 
 .profile__input{
+  width: 100%;
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
   text-align: right;
   border: none;
   outline: none;
+}
+
+.profile__input-error{
+  color:red;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  width: 100%;
+  text-align: end;
+  margin-bottom: 12px;
+  white-space: wrap;
+}
+
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
 }
 
 .profile__button{
@@ -71,13 +89,42 @@
   background: none;
   padding: 0;
   margin: 220px 0 16px 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.profile__link{
+.profile__button:hover{
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.profile__button_disabled:hover{
+  cursor:default;
+  opacity: 1;
+}
+
+.profile__save-button_inactive{
+  color: #A0A0A0;
+}
+
+.profile__save-button_inactive:hover{
+  cursor: default;
+  opacity: 1;
+}
+
+.profile__logout{
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
+  border: none;
+  background: none;
+  padding: 0;
   text-align: center;
   color: #FF4062;
   text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.profile__logout:hover{
+  cursor: pointer;
+  opacity: 0.6;
 }

@@ -10,7 +10,7 @@ function NavAuth () {
         <Logo />
         <div>
           <NavLink to='/signup' className="auth-header__item auth_option-reg">Регистрация</NavLink>
-          <NavLink to='signin' className="auth-header__item auth_option-log">Войти</NavLink>
+          <NavLink to='/signin' className="auth-header__item auth_option-log">Войти</NavLink>
         </div>
       </nav>
     )
