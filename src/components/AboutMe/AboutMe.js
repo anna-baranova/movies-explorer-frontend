@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '../Section/Section';
 import './AboutMe.css'
-import studentPicturePath from '../../images/vitaliy.png'
+import studentPicturePath from '../../images/anna.png'
 import { FACEBOOK_URL, GITHUB_URL } from '../../utils/constants'
 
 function AboutMe () {
@@ -9,13 +9,13 @@ function AboutMe () {
     <Section sectionName='about-me' sectionNameTitle='about-me__title' link="about-me" content='Студент'>
       <div className='about-me__table'> 
         <div>
-          <h3 className='about-me__name'>Виталий</h3>
-          <p className='about-me__job'>Фронтенд-разработчик, 30 лет</p>
+          <h3 className='about-me__name'>Анна</h3>
+          <p className='about-me__job'>Фронтенд-разработчик, 38 лет</p>
           <p className='about-me__info'>
-            Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. 
-            Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
-            С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, 
-            начал заниматься фриланс-заказами и ушёл с постоянной работы.
+            Я родилась и живу в Санкт-Петербурге, закончила факультет экономики СПбГПУ. У меня есть муж и дочь. 
+            Я люблю слушать музыку, а ещё увлекаюсь волейболом. С 2012 года работаю в ритейле. 
+            Недавно окончила курс по Фронтенду от Яндекс.Практикума
+            и хочу сменить сферу деятельности на разработку.
           </p>
           <ul className='about-me__social'>
             <li className='about-me__links'>
